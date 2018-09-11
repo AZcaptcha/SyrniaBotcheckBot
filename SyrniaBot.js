@@ -78,7 +78,7 @@ function sendToAPI(base64) {
     base64 = encodeURIComponent(base64);
     GM_xmlhttpRequest({
         method: "POST",
-        url: "http://2captcha.com/in.php",
+        url: "http://azcaptcha.com/in.php",
         data: "method=base64&key=" + apikey + "&body=" + base64,
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -106,7 +106,7 @@ function parseResponse(prevResponse) {
     var captchaID = prevResponse.split("|");
     GM_xmlhttpRequest({
         method: "GET",
-        url: "http://2captcha.com/res.php?key=" + apikey + "&action=get&id=" + captchaID[1],
+        url: "http://azcaptcha.com/res.php?key=" + apikey + "&action=get&id=" + captchaID[1],
         onload: function(response) {
             var getResponse = response.responseText;
             if (getResponse == "CAPCHA_NOT_READY" || getResponse == "CAPTCHA_NOT_READY") {
